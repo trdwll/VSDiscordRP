@@ -75,7 +75,6 @@ namespace VSDiscordRP
                 ide.Events.BuildEvents.OnBuildBegin += SolutionBuildingStart;
                 ide.Events.SolutionEvents.BeforeClosing += SolutionBeforeClosing;
 
-
                 // TODO bProjectContainsUE4
 
                 string IDEVersion = ide.Version.Split(new char[1] { '.' })[0];
@@ -135,9 +134,12 @@ namespace VSDiscordRP
 
                 if (bIsIdling)
                 {
+                    Presence.State = $"Idling";
+                    Discord.SetPresence(Presence);
                     return;
                 }
 
+                // We get the settings every time we update so we can keep the latest config
                 SettingsObj = Settings.GetOrCreateSettings();
                 SolutionName = Path.GetFileNameWithoutExtension(ide.Solution.FullName);
                 ProjectSettings = SettingsObj.PSettings.Where(x => x.SolutionName == SolutionName).FirstOrDefault();
@@ -159,6 +161,8 @@ namespace VSDiscordRP
                     string Message = ProjectSettings.HiddenMessage == "" ? SettingsObj.GSettings.HiddenMessage : ProjectSettings.HiddenMessage;
                     Presence.Details = Message.Substring(0, Message.Length / 2);
                     Presence.State = Message.Substring(Message.Length / 2, Message.Length / 2);
+
+                    Presence.Timestamps = null;
 
                     Discord.SetPresence(Presence);
                     return;
@@ -188,7 +192,7 @@ namespace VSDiscordRP
                     string Prefix = "Developing";
 
                     List<string> Prefixes = SettingsObj.GSettings.Prefixes;
-                    if (Prefixes.Count > 0)
+                    if (Prefixes != null && Prefixes.Count > 0)
                     {
                         Random rand = new Random();
                         Prefix = Prefixes[rand.Next(Prefixes.Count)];

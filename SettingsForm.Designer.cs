@@ -34,8 +34,11 @@ namespace VSDiscordRP
             this.txtHiddenMessage = new System.Windows.Forms.TextBox();
             this.cbShowLangImage = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtPrefixes = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbDisplayBuilding = new System.Windows.Forms.CheckBox();
             this.cbShowSolutionName = new System.Windows.Forms.CheckBox();
             this.cbShowFileName = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,10 +46,9 @@ namespace VSDiscordRP
             this.txtProjectHiddenMessage = new System.Windows.Forms.TextBox();
             this.cbResetTime = new System.Windows.Forms.CheckBox();
             this.cbShowTime = new System.Windows.Forms.CheckBox();
-            this.cbDisplayBuilding = new System.Windows.Forms.CheckBox();
             this.btnSettingsLocation = new System.Windows.Forms.Button();
-            this.txtPrefixes = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtIdleMessage = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +93,8 @@ namespace VSDiscordRP
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtIdleMessage);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtPrefixes);
@@ -100,10 +104,19 @@ namespace VSDiscordRP
             this.groupBox1.Controls.Add(this.cbHideUE4);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(284, 174);
+            this.groupBox1.Size = new System.Drawing.Size(284, 213);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Global Settings";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 132);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(137, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Prefixes (comma separated)";
             // 
             // label1
             // 
@@ -113,6 +126,14 @@ namespace VSDiscordRP
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Hidden Message";
+            // 
+            // txtPrefixes
+            // 
+            this.txtPrefixes.Location = new System.Drawing.Point(6, 148);
+            this.txtPrefixes.MaxLength = 500;
+            this.txtPrefixes.Name = "txtPrefixes";
+            this.txtPrefixes.Size = new System.Drawing.Size(272, 20);
+            this.txtPrefixes.TabIndex = 11;
             // 
             // groupBox2
             // 
@@ -124,12 +145,22 @@ namespace VSDiscordRP
             this.groupBox2.Controls.Add(this.txtProjectHiddenMessage);
             this.groupBox2.Controls.Add(this.cbResetTime);
             this.groupBox2.Controls.Add(this.cbShowTime);
-            this.groupBox2.Location = new System.Drawing.Point(12, 192);
+            this.groupBox2.Location = new System.Drawing.Point(12, 231);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(284, 182);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Project Settings";
+            // 
+            // cbDisplayBuilding
+            // 
+            this.cbDisplayBuilding.AutoSize = true;
+            this.cbDisplayBuilding.Location = new System.Drawing.Point(152, 19);
+            this.cbDisplayBuilding.Name = "cbDisplayBuilding";
+            this.cbDisplayBuilding.Size = new System.Drawing.Size(126, 17);
+            this.cbDisplayBuilding.TabIndex = 10;
+            this.cbDisplayBuilding.Text = "Show Building Status";
+            this.cbDisplayBuilding.UseVisualStyleBackColor = true;
             // 
             // cbShowSolutionName
             // 
@@ -198,20 +229,10 @@ namespace VSDiscordRP
             this.cbShowTime.Text = "Show Time";
             this.cbShowTime.UseVisualStyleBackColor = true;
             // 
-            // cbDisplayBuilding
-            // 
-            this.cbDisplayBuilding.AutoSize = true;
-            this.cbDisplayBuilding.Location = new System.Drawing.Point(152, 19);
-            this.cbDisplayBuilding.Name = "cbDisplayBuilding";
-            this.cbDisplayBuilding.Size = new System.Drawing.Size(126, 17);
-            this.cbDisplayBuilding.TabIndex = 10;
-            this.cbDisplayBuilding.Text = "Show Building Status";
-            this.cbDisplayBuilding.UseVisualStyleBackColor = true;
-            // 
             // btnSettingsLocation
             // 
             this.btnSettingsLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSettingsLocation.Location = new System.Drawing.Point(201, 383);
+            this.btnSettingsLocation.Location = new System.Drawing.Point(201, 443);
             this.btnSettingsLocation.Name = "btnSettingsLocation";
             this.btnSettingsLocation.Size = new System.Drawing.Size(95, 20);
             this.btnSettingsLocation.TabIndex = 8;
@@ -219,28 +240,28 @@ namespace VSDiscordRP
             this.btnSettingsLocation.UseVisualStyleBackColor = true;
             this.btnSettingsLocation.Click += new System.EventHandler(this.btnSettingsLocation_Click);
             // 
-            // txtPrefixes
+            // label4
             // 
-            this.txtPrefixes.Location = new System.Drawing.Point(6, 148);
-            this.txtPrefixes.MaxLength = 100;
-            this.txtPrefixes.Name = "txtPrefixes";
-            this.txtPrefixes.Size = new System.Drawing.Size(272, 20);
-            this.txtPrefixes.TabIndex = 11;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 171);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Idle Message";
             // 
-            // label3
+            // txtIdleMessage
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 132);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Prefixes (comma separated)";
+            this.txtIdleMessage.Location = new System.Drawing.Point(6, 187);
+            this.txtIdleMessage.MaxLength = 500;
+            this.txtIdleMessage.Name = "txtIdleMessage";
+            this.txtIdleMessage.Size = new System.Drawing.Size(272, 20);
+            this.txtIdleMessage.TabIndex = 13;
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 415);
+            this.ClientSize = new System.Drawing.Size(308, 475);
             this.Controls.Add(this.btnSettingsLocation);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -279,5 +300,7 @@ namespace VSDiscordRP
         private System.Windows.Forms.Button btnSettingsLocation;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPrefixes;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtIdleMessage;
     }
 }

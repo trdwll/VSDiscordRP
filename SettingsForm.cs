@@ -34,27 +34,21 @@ namespace VSDiscordRP
         private void LoadSettings()
         {
             string SolutionName = Path.GetFileNameWithoutExtension(VSDiscordRP.VSDiscordRPPackage.ide.Solution.FullName);
-
-            if (Properties.Settings.Default.Configuration == "")
-            {
-                Settings NewSettings = new Settings();
-                Settings.ProjectSettings NewProjectSettings = new Settings.ProjectSettings();
-                NewProjectSettings.SolutionName = SolutionName;
-                NewSettings.PSettings.Add(NewProjectSettings);
-
-                Properties.Settings.Default.Configuration = JsonConvert.SerializeObject(NewSettings);
-                Properties.Settings.Default.Save();
-            }
-
             Settings obj = Settings.GetOrCreateSettings();
             Settings.ProjectSettings CurrentProject = obj.PSettings.Where(x => x.SolutionName == SolutionName).FirstOrDefault();
+
+            if (SolutionName != "")
+            {
+                groupBox2.Text += $" ({SolutionName})";
+            }
 
             // Global
             cbEnabled.Checked = obj.GSettings.bEnabled;
             cbHideUE4.Checked = obj.GSettings.bHideUE4Projects;
             txtHiddenMessage.Text = obj.GSettings.HiddenMessage;
             cbShowLangImage.Checked = obj.GSettings.bShowLanguageImage;
-            txtPrefixes.Text = string.Join(",", obj.GSettings.Prefixes);
+            txtPrefixes.Text = string.Join(",", obj.GSettings.Prefixes ?? new List<string>() { "Working on", "Programming", "Programming on", "Coding on", "Coding" });
+            txtIdleMessage.Text = obj.GSettings.IdleMessage;
 
             // Project
             cbHiddenMode.Checked = CurrentProject.bHiddenMode;
@@ -76,15 +70,16 @@ namespace VSDiscordRP
             NewSettingsObj.GSettings.HiddenMessage = txtHiddenMessage.Text;
             NewSettingsObj.GSettings.bShowLanguageImage = cbShowLangImage.Checked;
             NewSettingsObj.GSettings.Prefixes = txtPrefixes.Text.Split(new char[] { ',' }).ToList();
+            NewSettingsObj.GSettings.IdleMessage = txtIdleMessage.Text;
 
             // Project
             Settings tmpProjectObj = JsonConvert.DeserializeObject<Settings>(Properties.Settings.Default.Configuration);
             if (tmpProjectObj != null)
             {
-                List<Settings.ProjectSettings> Projects = tmpProjectObj.PSettings;
-                if (Projects.Count > 0)
+                List<Settings.ProjectSettings> ExistingProjects = tmpProjectObj.PSettings;
+                if (ExistingProjects.Count > 0)
                 {
-                    Settings.ProjectSettings CurrentProject = Projects.Where(x => x.SolutionName == Path.GetFileNameWithoutExtension(VSDiscordRP.VSDiscordRPPackage.ide.Solution.FullName)).FirstOrDefault();
+                    Settings.ProjectSettings CurrentProject = ExistingProjects.Where(x => x.SolutionName == Path.GetFileNameWithoutExtension(VSDiscordRP.VSDiscordRPPackage.ide.Solution.FullName)).FirstOrDefault();
                     CurrentProject.bHiddenMode = cbHiddenMode.Checked;
                     CurrentProject.bShowTime = cbShowTime.Checked;
                     CurrentProject.bResetTimeOnFileChange = cbResetTime.Checked;
@@ -93,7 +88,7 @@ namespace VSDiscordRP
                     CurrentProject.HiddenMessage = txtProjectHiddenMessage.Text;
                     CurrentProject.bShowBuildingStatus = cbDisplayBuilding.Checked;
 
-                    NewSettingsObj.PSettings = Projects;
+                    NewSettingsObj.PSettings = ExistingProjects;
                 }
             }
 

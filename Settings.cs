@@ -18,24 +18,27 @@ namespace VSDiscordRP
         public static Settings GetOrCreateSettings()
         {
             string ConfigString = Properties.Settings.Default.Configuration;
-            Settings NewSettings = JsonConvert.DeserializeObject<Settings>(ConfigString);
+            Settings SettingsObj = JsonConvert.DeserializeObject<Settings>(ConfigString);
+            string SolutionName = Path.GetFileNameWithoutExtension(VSDiscordRPPackage.ide.Solution.FullName);
 
-            if (NewSettings == null)
+            if (SettingsObj == null)
             {
-                string SolutionName = Path.GetFileNameWithoutExtension(VSDiscordRPPackage.ide.Solution.FullName);
-
-                NewSettings = new Settings();
-                ProjectSettings NewProjectSettings = new ProjectSettings();
-                NewProjectSettings.SolutionName = SolutionName;
-                NewSettings.PSettings.Add(NewProjectSettings);
-
-                Properties.Settings.Default.Configuration = JsonConvert.SerializeObject(NewSettings);
-                Properties.Settings.Default.Save();
-
-                MessageBox.Show("Created new settings!");
+                SettingsObj = new Settings();
             }
 
-            return NewSettings;
+            bool bCurrentProjectExists = SettingsObj.PSettings.Where(x => x.SolutionName == SolutionName).FirstOrDefault() != null;
+
+            if (!bCurrentProjectExists)
+            {
+                ProjectSettings NewProjectSettings = new ProjectSettings();
+                NewProjectSettings.SolutionName = SolutionName;
+                SettingsObj.PSettings.Add(NewProjectSettings);
+            }
+
+            Properties.Settings.Default.Configuration = JsonConvert.SerializeObject(SettingsObj);
+            Properties.Settings.Default.Save();
+
+            return SettingsObj;
         }
 
         // Global Settings
@@ -52,7 +55,9 @@ namespace VSDiscordRP
 
             public bool bShowLanguageImage { get; set; } = true;
 
-            public List<string> Prefixes { get; set; } = new List<string>() { "Programming on", "Working on", "Coding on", "Programming", "Coding" };
+            public List<string> Prefixes { get; set; }
+
+            public string IdleMessage { get; set; } = "Idling";
         }
 
         // Project Settings
@@ -63,7 +68,7 @@ namespace VSDiscordRP
             public bool bHiddenMode { get; set; }
 
             // The message to be displayed if the project is hidden
-            public string HiddenMessage { get; set; }
+            public string HiddenMessage { get; set; } = "Sorry, but this project is private and I can't show you currently.";
 
             public bool bShowTime { get; set; } = true;
 

@@ -103,6 +103,7 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\discord_logo.png" />
     <Content Include="Resources\SettingsIcon.png" />
   </ItemGroup>
   <ItemGroup>
