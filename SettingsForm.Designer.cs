@@ -66,6 +66,7 @@ namespace VSDiscordRP
             // cbHideUE4
             // 
             this.cbHideUE4.AutoSize = true;
+            this.cbHideUE4.Enabled = false;
             this.cbHideUE4.Location = new System.Drawing.Point(6, 42);
             this.cbHideUE4.Name = "cbHideUE4";
             this.cbHideUE4.Size = new System.Drawing.Size(113, 17);
@@ -243,6 +244,7 @@ namespace VSDiscordRP
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Enabled = false;
             this.label4.Location = new System.Drawing.Point(6, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
@@ -251,6 +253,7 @@ namespace VSDiscordRP
             // 
             // txtIdleMessage
             // 
+            this.txtIdleMessage.Enabled = false;
             this.txtIdleMessage.Location = new System.Drawing.Point(6, 187);
             this.txtIdleMessage.MaxLength = 500;
             this.txtIdleMessage.Name = "txtIdleMessage";
