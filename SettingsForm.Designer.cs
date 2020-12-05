@@ -34,6 +34,8 @@ namespace VSDiscordRP
             this.txtHiddenMessage = new System.Windows.Forms.TextBox();
             this.cbShowLangImage = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtIdleMessage = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPrefixes = new System.Windows.Forms.TextBox();
@@ -47,8 +49,6 @@ namespace VSDiscordRP
             this.cbResetTime = new System.Windows.Forms.CheckBox();
             this.cbShowTime = new System.Windows.Forms.CheckBox();
             this.btnSettingsLocation = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtIdleMessage = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +109,25 @@ namespace VSDiscordRP
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Global Settings";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Enabled = false;
+            this.label4.Location = new System.Drawing.Point(6, 171);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Idle Message";
+            // 
+            // txtIdleMessage
+            // 
+            this.txtIdleMessage.Enabled = false;
+            this.txtIdleMessage.Location = new System.Drawing.Point(6, 187);
+            this.txtIdleMessage.MaxLength = 500;
+            this.txtIdleMessage.Name = "txtIdleMessage";
+            this.txtIdleMessage.Size = new System.Drawing.Size(272, 20);
+            this.txtIdleMessage.TabIndex = 13;
             // 
             // label3
             // 
@@ -241,25 +260,6 @@ namespace VSDiscordRP
             this.btnSettingsLocation.UseVisualStyleBackColor = true;
             this.btnSettingsLocation.Click += new System.EventHandler(this.btnSettingsLocation_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(6, 171);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Idle Message";
-            // 
-            // txtIdleMessage
-            // 
-            this.txtIdleMessage.Enabled = false;
-            this.txtIdleMessage.Location = new System.Drawing.Point(6, 187);
-            this.txtIdleMessage.MaxLength = 500;
-            this.txtIdleMessage.Name = "txtIdleMessage";
-            this.txtIdleMessage.Size = new System.Drawing.Size(272, 20);
-            this.txtIdleMessage.TabIndex = 13;
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,6 +272,7 @@ namespace VSDiscordRP
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsForm_FormClosing);
