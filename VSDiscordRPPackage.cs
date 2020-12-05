@@ -10,6 +10,7 @@ using DiscordRPC;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Newtonsoft.Json;
 using Task = System.Threading.Tasks.Task;
 
 namespace VSDiscordRP
@@ -129,6 +130,15 @@ namespace VSDiscordRP
             try
             {
                 await JoinableTaskFactory.SwitchToMainThreadAsync();
+
+                {
+                    Settings TmpSettings = JsonConvert.DeserializeObject<Settings>(Properties.Settings.Default.Configuration);
+                    if (TmpSettings != null && !TmpSettings.GSettings.bEnabled)
+                    {
+                        Discord.ClearPresence();
+                        return;
+                    }
+                }
 
                 bool bIsIdling = ide.Solution == null || string.IsNullOrEmpty(ide.Solution.FullName);
 
