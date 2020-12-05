@@ -1,6 +1,8 @@
 # VSDiscordRP
 Discord Rich Presence for Visual Studio.
 
+Download from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=TRDWLL.VSDiscordRP).
+
 ## Features
 - Per-Project settings
 - Customizable messages & prefixes
