@@ -8,6 +8,11 @@ pipeline {
   }
   
   stages {
+    stage('Restore') {
+      steps {
+        bat "\"${tool 'MSBuild'}\" VSDiscordRP.csproj /t:Restore"
+      }
+    }
 
     stage('Build Release') {
       steps {
