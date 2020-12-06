@@ -49,6 +49,7 @@ namespace VSDiscordRP
             this.cbResetTime = new System.Windows.Forms.CheckBox();
             this.cbShowTime = new System.Windows.Forms.CheckBox();
             this.btnSettingsLocation = new System.Windows.Forms.Button();
+            this.cbEnabledProject = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -157,6 +158,7 @@ namespace VSDiscordRP
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbEnabledProject);
             this.groupBox2.Controls.Add(this.cbDisplayBuilding);
             this.groupBox2.Controls.Add(this.cbShowSolutionName);
             this.groupBox2.Controls.Add(this.cbShowFileName);
@@ -167,7 +169,7 @@ namespace VSDiscordRP
             this.groupBox2.Controls.Add(this.cbShowTime);
             this.groupBox2.Location = new System.Drawing.Point(12, 231);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(284, 182);
+            this.groupBox2.Size = new System.Drawing.Size(284, 206);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Project Settings";
@@ -185,7 +187,7 @@ namespace VSDiscordRP
             // cbShowSolutionName
             // 
             this.cbShowSolutionName.AutoSize = true;
-            this.cbShowSolutionName.Location = new System.Drawing.Point(6, 111);
+            this.cbShowSolutionName.Location = new System.Drawing.Point(9, 134);
             this.cbShowSolutionName.Name = "cbShowSolutionName";
             this.cbShowSolutionName.Size = new System.Drawing.Size(125, 17);
             this.cbShowSolutionName.TabIndex = 9;
@@ -195,7 +197,7 @@ namespace VSDiscordRP
             // cbShowFileName
             // 
             this.cbShowFileName.AutoSize = true;
-            this.cbShowFileName.Location = new System.Drawing.Point(6, 88);
+            this.cbShowFileName.Location = new System.Drawing.Point(9, 111);
             this.cbShowFileName.Name = "cbShowFileName";
             this.cbShowFileName.Size = new System.Drawing.Size(103, 17);
             this.cbShowFileName.TabIndex = 8;
@@ -205,7 +207,7 @@ namespace VSDiscordRP
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 134);
+            this.label2.Location = new System.Drawing.Point(9, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 7;
@@ -214,7 +216,7 @@ namespace VSDiscordRP
             // cbHiddenMode
             // 
             this.cbHiddenMode.AutoSize = true;
-            this.cbHiddenMode.Location = new System.Drawing.Point(6, 19);
+            this.cbHiddenMode.Location = new System.Drawing.Point(9, 42);
             this.cbHiddenMode.Name = "cbHiddenMode";
             this.cbHiddenMode.Size = new System.Drawing.Size(90, 17);
             this.cbHiddenMode.TabIndex = 2;
@@ -223,7 +225,7 @@ namespace VSDiscordRP
             // 
             // txtProjectHiddenMessage
             // 
-            this.txtProjectHiddenMessage.Location = new System.Drawing.Point(6, 150);
+            this.txtProjectHiddenMessage.Location = new System.Drawing.Point(9, 173);
             this.txtProjectHiddenMessage.MaxLength = 100;
             this.txtProjectHiddenMessage.Name = "txtProjectHiddenMessage";
             this.txtProjectHiddenMessage.Size = new System.Drawing.Size(272, 20);
@@ -232,7 +234,7 @@ namespace VSDiscordRP
             // cbResetTime
             // 
             this.cbResetTime.AutoSize = true;
-            this.cbResetTime.Location = new System.Drawing.Point(6, 65);
+            this.cbResetTime.Location = new System.Drawing.Point(9, 88);
             this.cbResetTime.Name = "cbResetTime";
             this.cbResetTime.Size = new System.Drawing.Size(154, 17);
             this.cbResetTime.TabIndex = 5;
@@ -242,7 +244,7 @@ namespace VSDiscordRP
             // cbShowTime
             // 
             this.cbShowTime.AutoSize = true;
-            this.cbShowTime.Location = new System.Drawing.Point(6, 42);
+            this.cbShowTime.Location = new System.Drawing.Point(9, 65);
             this.cbShowTime.Name = "cbShowTime";
             this.cbShowTime.Size = new System.Drawing.Size(79, 17);
             this.cbShowTime.TabIndex = 3;
@@ -259,6 +261,16 @@ namespace VSDiscordRP
             this.btnSettingsLocation.Text = "Open Settings Location";
             this.btnSettingsLocation.UseVisualStyleBackColor = true;
             this.btnSettingsLocation.Click += new System.EventHandler(this.btnSettingsLocation_Click);
+            // 
+            // cbEnabledProject
+            // 
+            this.cbEnabledProject.AutoSize = true;
+            this.cbEnabledProject.Location = new System.Drawing.Point(9, 19);
+            this.cbEnabledProject.Name = "cbEnabledProject";
+            this.cbEnabledProject.Size = new System.Drawing.Size(138, 17);
+            this.cbEnabledProject.TabIndex = 11;
+            this.cbEnabledProject.Text = "Rich Presence Enabled";
+            this.cbEnabledProject.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -306,5 +318,6 @@ namespace VSDiscordRP
         private System.Windows.Forms.TextBox txtPrefixes;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtIdleMessage;
+        private System.Windows.Forms.CheckBox cbEnabledProject;
     }
 }

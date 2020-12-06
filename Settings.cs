@@ -63,6 +63,7 @@ namespace VSDiscordRP
         // Project Settings
         public class ProjectSettings
         {
+            public bool bEnabled { get; set; } = true;
             public string SolutionName { get; set; }
 
             public bool bHiddenMode { get; set; }

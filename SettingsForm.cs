@@ -51,6 +51,7 @@ namespace VSDiscordRP
             txtIdleMessage.Text = obj.GSettings.IdleMessage;
 
             // Project
+            cbEnabledProject.Checked = CurrentProject.bEnabled;
             cbHiddenMode.Checked = CurrentProject.bHiddenMode;
             cbShowTime.Checked = CurrentProject.bShowTime;
             cbResetTime.Checked = CurrentProject.bResetTimeOnFileChange;
@@ -80,6 +81,7 @@ namespace VSDiscordRP
                 if (ExistingProjects.Count > 0)
                 {
                     Settings.ProjectSettings CurrentProject = ExistingProjects.Where(x => x.SolutionName == Path.GetFileNameWithoutExtension(VSDiscordRP.VSDiscordRPPackage.ide.Solution.FullName)).FirstOrDefault();
+                    CurrentProject.bEnabled = cbEnabledProject.Checked;
                     CurrentProject.bHiddenMode = cbHiddenMode.Checked;
                     CurrentProject.bShowTime = cbShowTime.Checked;
                     CurrentProject.bResetTimeOnFileChange = cbResetTime.Checked;

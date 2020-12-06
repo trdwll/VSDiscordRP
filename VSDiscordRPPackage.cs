@@ -131,28 +131,18 @@ namespace VSDiscordRP
             {
                 await JoinableTaskFactory.SwitchToMainThreadAsync();
 
-                {
-                    Settings TmpSettings = JsonConvert.DeserializeObject<Settings>(Properties.Settings.Default.Configuration);
-                    if (TmpSettings != null && !TmpSettings.GSettings.bEnabled)
-                    {
-                        Discord.ClearPresence();
-                        return;
-                    }
-                }
-
                 bool bIsIdling = ide.Solution == null || string.IsNullOrEmpty(ide.Solution.FullName);
-
-                if (bIsIdling)
-                {
-                    Presence.State = $"Idling";
-                    Discord.SetPresence(Presence);
-                    return;
-                }
 
                 // We get the settings every time we update so we can keep the latest config
                 SettingsObj = Settings.GetOrCreateSettings();
                 SolutionName = Path.GetFileNameWithoutExtension(ide.Solution.FullName);
                 ProjectSettings = SettingsObj.PSettings.Where(x => x.SolutionName == SolutionName).FirstOrDefault();
+
+                if (!SettingsObj.GSettings.bEnabled || !ProjectSettings.bEnabled)
+                {
+                    Discord.ClearPresence();
+                    return;
+                }
 
                 if (ProjectSettings.bShowBuildingStatus && Status != EPresence.None && !ProjectSettings.bHiddenMode)
                 {
@@ -163,6 +153,13 @@ namespace VSDiscordRP
 
                     Discord.SetPresence(Presence);
 
+                    return;
+                }
+
+                if (bIsIdling)
+                {
+                    Presence.State = $"Idling";
+                    Discord.SetPresence(Presence);
                     return;
                 }
 
