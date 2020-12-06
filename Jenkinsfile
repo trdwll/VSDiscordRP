@@ -4,7 +4,6 @@ pipeline {
     node {
       label 'Windows'
     }
-
   }
   
   stages {
@@ -25,6 +24,14 @@ pipeline {
         bat "\"${tool 'MSBuild'}\" VSDiscordRP.csproj /p:Configuration=Debug"
       }
     }
-
+    
+    stage('Publish') {
+      when {
+        branch "main"
+      }
+      steps {
+        bat "py -u C:\\jenkins.py VSDiscordRP Publish \"%WORKSPACE%\""
+      }
+    }
   }
 }
