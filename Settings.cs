@@ -115,6 +115,7 @@ namespace VSDiscordRP
             { new string[]{ ".LUA" }, new string[] { "lua", "Lua" } },
             { new string[]{ ".HLSL" }, new string[] { "text", "HLSL" } },
             { new string[]{ ".GLSL" }, new string[] { "text", "GLSL" } },
+            { new string[]{ ".VB" }, new string[] { "vb", "Visual Basic" } },
         };
         public static readonly Dictionary<int, string> IDEVersions = new Dictionary<int, string>
         {
