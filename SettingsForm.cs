@@ -45,7 +45,8 @@ namespace VSDiscordRP
             // Global
             cbEnabled.Checked = obj.GSettings.bEnabled;
             cbHideUE4.Checked = obj.GSettings.bHideUE4Projects;
-            txtHiddenMessage.Text = obj.GSettings.HiddenMessage;
+            txtHiddenMessageLine1.Text = obj.GSettings.HiddenMessageLine1;
+            txtHiddenMessageLine2.Text = obj.GSettings.HiddenMessageLine2;
             cbShowLangImage.Checked = obj.GSettings.bShowLanguageImage;
             txtPrefixes.Text = string.Join(",", obj.GSettings.Prefixes ?? new List<string>() { "Working on", "Programming", "Programming on", "Coding on", "Coding" });
             txtIdleMessage.Text = obj.GSettings.IdleMessage;
@@ -57,7 +58,8 @@ namespace VSDiscordRP
             cbResetTime.Checked = CurrentProject.bResetTimeOnFileChange;
             cbShowFileName.Checked = CurrentProject.bShowFileName;
             cbShowSolutionName.Checked = CurrentProject.bShowSolutionName;
-            txtProjectHiddenMessage.Text = CurrentProject.HiddenMessage;
+            txtProjectHiddenMessageLine1.Text = CurrentProject.HiddenMessageLine1;
+            txtProjectHiddenMessageLine2.Text = CurrentProject.HiddenMessageLine2;
             cbDisplayBuilding.Checked = CurrentProject.bShowBuildingStatus;
         }
 
@@ -68,7 +70,8 @@ namespace VSDiscordRP
             // Global
             NewSettingsObj.GSettings.bEnabled = cbEnabled.Checked;
             NewSettingsObj.GSettings.bHideUE4Projects = cbHideUE4.Checked;
-            NewSettingsObj.GSettings.HiddenMessage = txtHiddenMessage.Text;
+            NewSettingsObj.GSettings.HiddenMessageLine1 = txtHiddenMessageLine1.Text;
+            NewSettingsObj.GSettings.HiddenMessageLine2 = txtHiddenMessageLine2.Text;
             NewSettingsObj.GSettings.bShowLanguageImage = cbShowLangImage.Checked;
             NewSettingsObj.GSettings.Prefixes = txtPrefixes.Text.Split(new char[] { ',' }).ToList();
             NewSettingsObj.GSettings.IdleMessage = txtIdleMessage.Text;
@@ -87,7 +90,8 @@ namespace VSDiscordRP
                     CurrentProject.bResetTimeOnFileChange = cbResetTime.Checked;
                     CurrentProject.bShowFileName = cbShowFileName.Checked;
                     CurrentProject.bShowSolutionName = cbShowSolutionName.Checked;
-                    CurrentProject.HiddenMessage = txtProjectHiddenMessage.Text;
+                    CurrentProject.HiddenMessageLine1 = txtProjectHiddenMessageLine1.Text;
+                    CurrentProject.HiddenMessageLine2 = txtProjectHiddenMessageLine2.Text;
                     CurrentProject.bShowBuildingStatus = cbDisplayBuilding.Checked;
 
                     NewSettingsObj.PSettings = ExistingProjects;

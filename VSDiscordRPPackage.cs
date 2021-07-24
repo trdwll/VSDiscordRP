@@ -165,9 +165,10 @@ namespace VSDiscordRP
 
                 if (ProjectSettings.bHiddenMode || (bProjectContainsUE4 && SettingsObj.GSettings.bHideUE4Projects))
                 {
-                    string Message = ProjectSettings.HiddenMessage == "" ? SettingsObj.GSettings.HiddenMessage : ProjectSettings.HiddenMessage;
-                    Presence.Details = Message.Substring(0, Message.Length / 2);
-                    Presence.State = Message.Substring(Message.Length / 2, Message.Length / 2);
+                    string Message1 = ProjectSettings.HiddenMessageLine1 == "" ? SettingsObj.GSettings.HiddenMessageLine1 : ProjectSettings.HiddenMessageLine1;
+                    string Message2 = ProjectSettings.HiddenMessageLine2 == "" ? SettingsObj.GSettings.HiddenMessageLine2 : ProjectSettings.HiddenMessageLine2;
+                    Presence.Details = Message1;
+                    Presence.State = Message2;
 
                     Presence.Timestamps = null;
 

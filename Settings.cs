@@ -51,7 +51,8 @@ namespace VSDiscordRP
             public bool bHideUE4Projects { get; set; }
 
             // The message to be displayed if the project is hidden
-            public string HiddenMessage { get; set; } = "Sorry, but this project is private and I can't show you currently.";
+            public string HiddenMessageLine1 { get; set; } = "Sorry, but this project is private.";
+            public string HiddenMessageLine2 { get; set; } = "I can't show you currently.";
 
             public bool bShowLanguageImage { get; set; } = true;
 
@@ -69,7 +70,8 @@ namespace VSDiscordRP
             public bool bHiddenMode { get; set; }
 
             // The message to be displayed if the project is hidden
-            public string HiddenMessage { get; set; } = "Sorry, but this project is private and I can't show you currently.";
+            public string HiddenMessageLine1 { get; set; } = "Sorry, but this project is private.";
+            public string HiddenMessageLine2 { get; set; } = "I can't show you currently.";
 
             public bool bShowTime { get; set; } = true;
 
