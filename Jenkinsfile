@@ -30,7 +30,7 @@ pipeline {
         branch "main"
       }
       steps {
-        bat "py -u C:\\jenkins.py VSDiscordRP Publish \"%WORKSPACE%\""
+        bat "C:\\JenkinsBuilder.exe VSDiscordRP Publish \"%WORKSPACE%\""
       }
     }
   }
